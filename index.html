@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GunShop.am - Զենքի մասնագիտացված հարթակ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo" onclick="showSection('home')">GunShop.am</div>
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Փնտրել (օր. Sayga)...">
+            <button onclick="handleSearch()">Որոնել</button>
+        </div>
+        <nav id="main-nav">
+            <a href="#" onclick="showSection('home')">Գլխավոր</a>
+            <a href="#" id="nav-fav" onclick="showSection('favorites')" style="display:none;">Հավանվածներ ❤️</a>
+            <a href="#" id="nav-add" onclick="showSection('add-listing')" style="display:none;">Վաճառել +</a>
+            <a href="#" id="nav-msg" onclick="showSection('messages')" style="display:none;">Նամակներ</a>
+            <a href="#" id="nav-profile" onclick="showSection('profile')" style="display:none;">Պրոֆիլ</a>
+            <button id="auth-btn" onclick="showSection('auth')">Մուտք</button>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section id="home-section" class="content-section">
+            <h2>Վերջին հայտարարությունները</h2>
+            <div class="product-grid" id="productGrid"></div>
+        </section>
+
+        <section id="auth-section" class="content-section" style="display:none;">
+            <div class="form-container">
+                <h2 id="auth-title">Մուտք</h2>
+                <input type="text" id="auth-username" placeholder="Օգտատիրոջ անուն">
+                <input type="password" id="auth-password" placeholder="Գաղտնաբառ">
+                <button class="btn-msg" id="auth-submit" onclick="handleAuth()">Մուտք գործել</button>
+                <p style="margin-top:10px; cursor:pointer; color: blue;" onclick="toggleAuthMode()" id="auth-toggle-text">Չունե՞ք հաշիվ։ Գրանցվեք</p>
+            </div>
+        </section>
+
+        <section id="favorites-section" class="content-section" style="display:none;">
+            <h2>Իմ հավանված ապրանքները ❤️</h2>
+            <div class="product-grid" id="favoritesGrid"></div>
+        </section>
+
+        <section id="add-listing-section" class="content-section" style="display:none;">
+            <h2>Տեղադրել նոր հայտարարություն</h2>
+            <div class="form-container">
+                <input type="text" id="newTitle" placeholder="Զենքի անվանումը">
+                <input type="number" id="newPrice" placeholder="Գինը (֏)">
+                <textarea id="newDesc" placeholder="Նկարագրություն"></textarea>
+                <button class="btn-msg" onclick="addNewProduct()">Հրապարակել</button>
+            </div>
+        </section>
+
+        <section id="messages-section" class="content-section" style="display:none;">
+            <h2>Իմ նամակագրությունը</h2>
+            <div class="card-info">Նամակներ չկան:</div>
+        </section>
+
+        <section id="profile-section" class="content-section" style="display:none;">
+            <h2>Օգտատիրոջ պրոֆիլ</h2>
+            <div class="card-info" id="profile-data"></div>
+            <button onclick="logout()" class="btn-fav" style="margin-top:20px;">Դուրս գալ</button>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
